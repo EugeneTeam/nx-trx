@@ -1,0 +1,28 @@
+{
+  "name": "nx-trx",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/nx-trx/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": [
+        "build"
+      ],
+      "options": {
+        "buildTarget": "nx-trx:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "nx-trx:build:development"
+        },
+        "production": {
+          "buildTarget": "nx-trx:build:production"
+        }
+      }
+    }
+  }
+}
