@@ -99,3 +99,17 @@ And join the Nx community:
 - [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
 - [Our Youtube channel](https://www.youtube.com/@nxdevtools)
 - [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+## Notes
+- use for create app
+```sh
+nx g @nx/nest:app [app name]
+```
+- use for start app
+```sh
+nx serve [app name]
+```
+- nx graph
+```sh
+nx graph
+```
