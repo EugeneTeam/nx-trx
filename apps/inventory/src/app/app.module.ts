@@ -2,26 +2,22 @@ import { Module } from '@nestjs/common';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ClientsModule, Transport } from '@nestjs/microservices';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { InventoryEntity } from './entities/inventory.entity';
 
 @Module({
-  imports: [
-    ClientsModule.register([
-      {
-        name: 'KAKFA_INVENTORY',
-        transport: Transport.KAFKA,
-        options: {
-          client: {
-            clientId: 'inventory-client',
-            brokers: ['localhost:1']
-          },
-          consumer: {
-            groupId: 'inventory-consumer-group',
-          }
-        }
-      }
-    ])
-  ],
+  imports: [TypeOrmModule.forRoot({
+    type: 'postgres',
+    host: process.env.DB_HOST,
+    port: parseInt(process.env.DB_PORT, 10),
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    entities: [InventoryEntity],
+    autoLoadEntities: true,
+    /** only for test*/
+    synchronize: true,
+  })],
   controllers: [AppController],
   providers: [AppService],
 })

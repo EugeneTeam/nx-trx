@@ -10,14 +10,14 @@ export class UserEntity implements IUser {
   @Column({
     type: 'varchar',
     nullable: false,
-    length: LENGTH_CONSTRAINTS.name
+    length: LENGTH_CONSTRAINTS.NAME
   })
   name: string;
 
   @Column({
     type: 'varchar',
     nullable: false,
-    length: LENGTH_CONSTRAINTS.email
+    length: LENGTH_CONSTRAINTS.EMAIL
   })
   email: string;
 }

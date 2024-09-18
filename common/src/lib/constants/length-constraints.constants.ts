@@ -1,4 +1,5 @@
 export const LENGTH_CONSTRAINTS = {
-  email: 50,
-  name: 50
+  EMAIL: 50,
+  NAME: 50,
+  STATUS: 20,
 }

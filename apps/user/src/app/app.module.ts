@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserEntity } from './entities/user.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -12,10 +13,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    entities: ['dist/apps/user**/*.entity{.ts,.js}'],
-    migrations: ['dist/apps/user/db/migrations/*{.ts,.js}'],
+    entities: [UserEntity],
     autoLoadEntities: true,
-    synchronize: false,
+    /** only for test*/
+    synchronize: true,
   })],
   controllers: [AppController],
   providers: [AppService],
